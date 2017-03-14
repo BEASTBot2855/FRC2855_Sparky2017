@@ -89,7 +89,7 @@ public class RobotMap {
         shooterActivateCANTalon1.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
         shooterActivateCANTalon1.reverseSensor(false);
         shooterActivateCANTalon1.configNominalOutputVoltage(+0.0f, -0.0f);
-        shooterActivateCANTalon1.configPeakOutputVoltage(+12.0f, -12.0f);
+        shooterActivateCANTalon1.configPeakOutputVoltage(+12.0f, -0.0f);
         shooterActivateCANTalon1.setProfile(0);
     }
 }
