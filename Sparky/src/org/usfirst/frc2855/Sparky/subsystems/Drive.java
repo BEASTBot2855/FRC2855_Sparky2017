@@ -16,7 +16,6 @@ import org.usfirst.frc2855.Sparky.RobotMap;
 import org.usfirst.frc2855.Sparky.commands.*;
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -55,11 +54,11 @@ public class Drive extends Subsystem {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
     }
-    public void driveRobot (Joystick left, Joystick right) {
+    public void driveRobot (Double left, Double right) {
     	robotDrive41.tankDrive(left, right);
     }
     public void stop () {
-    	robotDrive41.tankDrive(0, 0);
+    	robotDrive41.tankDrive(0.0, 0.0);
     }
 }
 
