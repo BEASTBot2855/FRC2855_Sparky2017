@@ -80,8 +80,6 @@ public class OI {
         joystickButton3.whileHeld(new Shooter());
         joystickButton1 = new JoystickButton(joystick1, 1);
         joystickButton1.whileHeld(new GearPinch());
-        i2cstart = new JoystickButton(joystick1, 9);
-        i2cstart.whenPressed(new I2CGet());
         
 
 
