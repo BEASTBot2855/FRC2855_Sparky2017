@@ -17,7 +17,7 @@ public class Pixy extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public short[][] getData() {
+    public static short[][] getData() {
     	short[][] b = TPixy.getBlocks();
     	return b;
     }

@@ -9,7 +9,7 @@ public class TPixy<LinkType> implements java.io.Closeable {
   public final static short[][] getBlocks() {
 	  short word1;
 	  short word2;
-	  short[][] frameBlocks = new short[2][7];
+	  short[][] frameBlocks = new short[2][8];
 	  int blockNum = 0;
 	  int n;
 	  short[] b;
@@ -34,9 +34,9 @@ public class TPixy<LinkType> implements java.io.Closeable {
   
   public final static short[] saveBlock(int num, int loc) {
 	  short val;
-	  block = new short[7];
+	  block = new short[8];
 	  	block[0] = (short) num;
-	  	for (int w = 1; w < 7; w++) {
+	  	for (int w = 1; w < 8; w++) {
 	  		val = LinkI2C.getWord((loc + 2*w));
 	  		block[w] = val;
 	  	}
