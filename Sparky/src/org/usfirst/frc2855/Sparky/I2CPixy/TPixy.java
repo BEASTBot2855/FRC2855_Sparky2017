@@ -6,7 +6,7 @@ public class TPixy<LinkType> implements java.io.Closeable {
   
   public static short[] block;
   
-  public final short[][] getBlocks() {
+  public final static short[][] getBlocks() {
 	  short word1;
 	  short word2;
 	  short[][] frameBlocks = new short[2][7];
@@ -32,7 +32,7 @@ public class TPixy<LinkType> implements java.io.Closeable {
 	  
   }
   
-  public final short[] saveBlock(int num, int loc) {
+  public final static short[] saveBlock(int num, int loc) {
 	  short val;
 	  block = new short[7];
 	  	block[0] = (short) num;
