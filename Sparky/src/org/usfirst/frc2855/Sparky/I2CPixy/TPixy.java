@@ -13,17 +13,20 @@ public class TPixy<LinkType> implements java.io.Closeable {
 	  int blockNum = 0;
 	  int n;
 	  short[] b;
+	  byte[] c = new byte[64];
+	  c = LinkI2C.getData();
+	  
 	  
 	  for (n=0; n<64;) {
-		  word1 = LinkI2C.getWord(n);
-		  word2 = LinkI2C.getWord(n+2);
+		  word1 = getWord(n, c);
+		  word2 = getWord(n+2, c);
 		  if (word1 == 0xaa55 && word2 == 0xaa55 && blockNum == 0) {
-			  b = saveBlock(blockNum, n+2);
+			  b = saveBlock(blockNum, n+2, c);
 			  frameBlocks[0] = b;
 			  blockNum++;
 			  n += 16;
 		  } else if (word1 == 0xaa55 && blockNum == 1) {
-			  b = saveBlock(blockNum, n);
+			  b = saveBlock(blockNum, n, c);
 			  frameBlocks[1] = b;
 			  break;
 		  } else {
@@ -34,17 +37,22 @@ public class TPixy<LinkType> implements java.io.Closeable {
 	  
   }
   
-  public final static short[] saveBlock(int num, int loc) {
+  public final static short[] saveBlock(int num, int loc, byte[] c) {
 	  short val;
 	  block = new short[7];
 	  	block[0] = (short) num;
 	  	for (int w = 1; w < 7; w++) {
-	  		val = LinkI2C.getWord((loc + 2*w));
+	  		val = getWord((loc + 2*w), c);
 	  		block[w] = val;
 	  	}
 	  return block;
   }
  
+  public final static short getWord(int location, byte[] c) {
+	short w = (short) ((c[location + 1] << 8) + c[location]);
+	return w;
+  }
+  
   //public final byte SetServos(short s0, short s1)
   //{
 	//byte[] outBuf = new byte[6];
