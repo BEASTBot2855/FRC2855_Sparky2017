@@ -47,13 +47,6 @@ public class LinkI2C
 	  Wire.readOnly(data, 64);
 	  return data;
   }
-  /*public final static short getWord(int location, boolean newdata) {
-	byte[] c = new byte[64];
-    c = getData();
-	short w = (short) ((c[location + 1] << 8) + c[location]);
-	return w;
-  }
-  */
   public final static int send(byte[] data, int len) {
 	Wire.writeBulk(data);
 	return len;
