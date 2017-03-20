@@ -59,16 +59,16 @@ public class AutonomousCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (sonic.getRangeInches() >= 60) {
+        /*if (sonic.getRangeInches() >= 60) {
         	return true;
-        } else
+        } else {*/
         	return false;
-        }
-
+        //}
+	}
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drive.stop();
-    	sonic.setAutomaticMode(false);
+    	//Robot.drive.stop();
+    	//sonic.setAutomaticMode(false);
     }
 
     // Called when another command which requires one or more of the same
