@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2855.Sparky.commands;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2855.Sparky.Robot;
@@ -53,6 +54,7 @@ public class AutonomousCommand extends Command {
     		String print = String.format("block: %d sig: %d x: %d y: %d width: %d height: %d\n", c[n][0], c[n][2], c[n][3], c[n][4], c[n][5], c[n][6]);
     		DriverStation.reportWarning(print, true);
     	}
+    	Timer.delay(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
