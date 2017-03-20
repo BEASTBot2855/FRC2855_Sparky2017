@@ -47,25 +47,33 @@ public class AutonomousCommandWithDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	int cavg;
+    	int t = 0;
     	short[][] c = Pixy.getData();
-    	for (int n=0; n<2; n++) {
-    		String print = String.format("block: %d sig: %d x: %d y: %d width: %d height: %d\n", c[n][0], c[n][2], c[n][3], c[n][4], c[n][5], c[n][6]);
-    		DriverStation.reportWarning(print, true);
+    	if (t == 13) {
+    		for (int n=0; n<2; n++) {
+    			String print = String.format("block: %d sig: %d x: %d y: %d width: %d height: %d\n", c[n][0], c[n][2], c[n][3], c[n][4], c[n][5], c[n][6]);
+    			DriverStation.reportWarning(print, true);
+    		}
+    		cavg = Math.abs(c[0][3] + c[1][3])/2;
+    		if (cavg <= 170 && cavg >= 150) {
+    			Robot.drive.driveRobot(.25, .25);
+    		} else if (cavg > 170) {
+    			Robot.drive.driveRobot(.3, .2);
+    		} else if (cavg < 150) {
+    			Robot.drive.driveRobot(.2, .3);
+    		}
+    		t = 0;
     	}
-    	cavg = Math.abs(c[0][3] + c[1][3])/2;
-    	if (cavg <= 170 && cavg >= 150) {
-    		Robot.drive.driveRobot(.25, .25);
-    	} else if (cavg > 170) {
-    		Robot.drive.driveRobot(.3, .2);
-    	} else if (cavg < 150) {
-    		Robot.drive.driveRobot(.2, .3);
-    	}
-    	Timer.delay(0.125);
+    	t++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        	return false;
+        	if (sonic.getRangeInches() <= 6) {
+        		return true;
+        	} else {
+        		return false;
+        	}
 	}
     // Called once after isFinished returns true
     protected void end() {
