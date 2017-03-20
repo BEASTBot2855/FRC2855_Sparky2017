@@ -44,7 +44,7 @@ public class LinkI2C
   } 
   public final static byte[] getData() {
 	  data = new byte[64];
-	  Wire.readOnly(data, 64);
+	  Wire.readOnly(data, 64);  // if this doesn't work, try read();
 	  return data;
   }
   public final static int send(byte[] data, int len) {
