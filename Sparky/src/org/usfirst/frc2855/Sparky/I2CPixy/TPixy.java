@@ -9,15 +9,17 @@ public class TPixy<LinkType> implements java.io.Closeable {
   public final static short[][] getBlocks() {
 	  short word1;
 	  short word2;
-	  short[][] frameBlocks = new short[2][7];
+	  int getNumBlocks = 2;
+	  short[][] frameBlocks = new short[getNumBlocks][7];
 	  int blockNum = 0;
+	  int dataInSize = 64;
 	  int n;
 	  short[] b;
-	  byte[] c = new byte[64];
+	  byte[] c = new byte[dataInSize];
 	  c = LinkI2C.getData();
 	  
 	  
-	  for (n=0; n<64;) {
+	  for (n=0; n<dataInSize;) {
 		  word1 = getWord(n, c);
 		  word2 = getWord(n+2, c);
 		  if (word1 == 0xaa55 && word2 == 0xaa55 && blockNum == 0) {
@@ -25,9 +27,14 @@ public class TPixy<LinkType> implements java.io.Closeable {
 			  frameBlocks[0] = b;
 			  blockNum++;
 			  n += 16;
-		  } else if (word1 == 0xaa55 && blockNum == 1) {
+		  } else if (word1 == 0xaa55 && blockNum < getNumBlocks && blockNum != 0) {
 			  b = saveBlock(blockNum, n, c);
-			  frameBlocks[1] = b;
+			  frameBlocks[blockNum] = b;
+			  blockNum++;
+			  n += 16;
+		  } else if (word1 == 0xaa55 && blockNum == getNumBlocks) {
+			  b = saveBlock(blockNum, n, c);
+			  frameBlocks[getNumBlocks - 1] = b;
 			  break;
 		  } else {
 			  n += 2;
