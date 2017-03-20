@@ -10,10 +10,12 @@
 
 
 package org.usfirst.frc2855.Sparky.commands;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2855.Sparky.Robot;
 import org.usfirst.frc2855.Sparky.RobotMap;
+import org.usfirst.frc2855.Sparky.subsystems.Pixy;
 
 /**
  *
@@ -39,12 +41,18 @@ public class AutonomousCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	sonic.setAutomaticMode(true);
+    	//sonic.setAutomaticMode(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.driveRobot(.5, .5);
+    	//Robot.drive.driveRobot(.5, .5);
+    	
+    	short[][] c = Pixy.getData();
+    	for (int n=0; n<2; n++) {
+    		String print = String.format("block: %d sig: %d x: %d y: %d width: %d height: %d\n", c[n][0], c[n][2], c[n][3], c[n][4], c[n][5], c[n][6]);
+    		DriverStation.reportWarning(print, true);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
