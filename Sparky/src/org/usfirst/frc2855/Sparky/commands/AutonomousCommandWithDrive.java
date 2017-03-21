@@ -51,10 +51,13 @@ public class AutonomousCommandWithDrive extends Command {
     protected void execute() {
     	if (left.get() == true) {
     		Robot.drive.driveRobot(0.2, 0.3);
+    		DriverStation.reportWarning("Move Left!!!", true);
     	} else if (right.get() == true) {
     		Robot.drive.driveRobot(0.3, 0.2);
+    		DriverStation.reportWarning("Move Right!!!", true);
     	} else {
     		Robot.drive.driveRobot(0.25, 0.25);
+    		DriverStation.reportWarning("You are on target.", true);
     	}
     }
 
