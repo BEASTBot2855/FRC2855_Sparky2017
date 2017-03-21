@@ -28,7 +28,6 @@ public class AutonomousDriveCommandGroup extends CommandGroup {
         // arm.
     	requires(Robot.drive);
     	requires(Robot.gearArmPrototype);
-    	requires(Robot.pixy);
     	
     	addSequential(new AutonomousCommandWithDrive());
     	addSequential(new AutonomousCommandReleaseGear());
