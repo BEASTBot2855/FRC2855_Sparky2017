@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2855.Sparky.subsystems;
 
+import org.usfirst.frc2855.Sparky.DriveSparky;
 import org.usfirst.frc2855.Sparky.Robot;
 import org.usfirst.frc2855.Sparky.RobotMap;
 import org.usfirst.frc2855.Sparky.commands.*;
@@ -58,10 +59,10 @@ public class Drive extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void driveRobot (Double left, Double right) {
-    	robotDrive41.tankDrive(left, right);
+    	DriveSparky.tankDrive(left, right);
     }
     public void stop () {
-    	robotDrive41.tankDrive(0.0, 0.0);
+    	DriveSparky.tankDrive(0.0, 0.0);
     }
     public void calibrateGyro () {
     	gyro.calibrate();
