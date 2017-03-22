@@ -50,13 +50,13 @@ public class AutonomousCommandWithDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (left.get() == true && right.get() == false) {
-    		//Robot.drive.driveRobot(0.5, -0.5);
+    		Robot.drive.driveRobot(0.5, -0.5);
     		System.out.println("Move Left!!!");
     	} else if (right.get() == true && left.get() == false) {
-    		//Robot.drive.driveRobot(-0.5, 0.5);
+    		Robot.drive.driveRobot(-0.5, 0.5);
     		System.out.println("Move Right!!!");
     	} else {
-    		//Robot.drive.driveRobot(-0.0, -0.0);
+    		Robot.drive.driveRobot(-0.0, -0.0);
     		System.out.println("You are on target.");
     	}
     	Timer.delay(0.25);
