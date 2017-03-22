@@ -89,8 +89,8 @@ public class RobotMap {
         shooterActivateCANTalon1.configPeakOutputVoltage(+12.0f, -0.0f);
         shooterActivateCANTalon1.setProfile(0);
         
-        arduinoInRight = new DigitalInput(6);
-        arduinoInLeft = new DigitalInput(7);
+        arduinoInRight = new DigitalInput(8);
+        arduinoInLeft = new DigitalInput(9);
         
         gyro = new ADXRS453Gyro();
     }

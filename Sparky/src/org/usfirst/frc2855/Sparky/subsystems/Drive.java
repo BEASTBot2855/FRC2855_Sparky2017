@@ -59,10 +59,10 @@ public class Drive extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void driveRobot (Double left, Double right) {
-    	DriveSparky.tankDrive(left, right);
+    	robotDrive41.tankDrive(left, right);
     }
     public void stop () {
-    	DriveSparky.tankDrive(0.0, 0.0);
+    	robotDrive41.tankDrive(0.0, 0.0);
     }
     public void calibrateGyro () {
     	gyro.calibrate();

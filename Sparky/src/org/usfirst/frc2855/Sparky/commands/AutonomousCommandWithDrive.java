@@ -52,13 +52,14 @@ public class AutonomousCommandWithDrive extends Command {
     protected void execute() {
     	int a = PixyArduino.getDirection();
     	if (a == 1) {
-    		Robot.drive.driveRobot(0.5, -0.5);
+    		Robot.drive.driveRobot(1.0, -1.0);
     		System.out.println("Move Left!!!");
     	} else if (a == 2) {
-    		Robot.drive.driveRobot(-0.5, 0.5);
+    		Robot.drive.driveRobot(-1.0, 1.0);
     		System.out.println("Move Right!!!");
     	} else if (a == 0) {
     		Robot.drive.driveRobot(-0.0, -0.0);
+    		System.out.println("You are on target");
     	}
     	Timer.delay(0.25);
     }
