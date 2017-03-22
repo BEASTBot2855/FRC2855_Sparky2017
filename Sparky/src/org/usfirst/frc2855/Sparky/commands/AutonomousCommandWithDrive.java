@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2855.Sparky.Robot;
 import org.usfirst.frc2855.Sparky.RobotMap;
+import org.usfirst.frc2855.Sparky.subsystems.PixyArduino;
 
 /**
  *
@@ -49,15 +50,15 @@ public class AutonomousCommandWithDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (left.get() == true && right.get() == false) {
+    	int a = PixyArduino.getDirection();
+    	if (a == 1) {
     		Robot.drive.driveRobot(0.5, -0.5);
     		System.out.println("Move Left!!!");
-    	} else if (right.get() == true && left.get() == false) {
+    	} else if (a == 2) {
     		Robot.drive.driveRobot(-0.5, 0.5);
     		System.out.println("Move Right!!!");
-    	} else {
+    	} else if (a == 0) {
     		Robot.drive.driveRobot(-0.0, -0.0);
-    		System.out.println("You are on target.");
     	}
     	Timer.delay(0.25);
     }
