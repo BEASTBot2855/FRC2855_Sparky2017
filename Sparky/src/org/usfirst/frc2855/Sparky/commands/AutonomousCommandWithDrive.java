@@ -44,30 +44,31 @@ public class AutonomousCommandWithDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drive.driveRobot(0.25, 0.25);
+    	Robot.drive.driveRobot(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (left.get() == true) {
-    		Robot.drive.driveRobot(0.2, 0.3);
-    		DriverStation.reportWarning("Move Left!!!", true);
-    	} else if (right.get() == true) {
-    		Robot.drive.driveRobot(0.3, 0.2);
-    		DriverStation.reportWarning("Move Right!!!", true);
+    	if (left.get() == true && right.get() == false) {
+    		//Robot.drive.driveRobot(0.5, -0.5);
+    		System.out.println("Move Left!!!");
+    	} else if (right.get() == true && left.get() == false) {
+    		//Robot.drive.driveRobot(-0.5, 0.5);
+    		System.out.println("Move Right!!!");
     	} else {
-    		Robot.drive.driveRobot(0.25, 0.25);
-    		DriverStation.reportWarning("You are on target.", true);
+    		//Robot.drive.driveRobot(-0.0, -0.0);
+    		System.out.println("You are on target.");
     	}
+    	Timer.delay(0.25);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        	if (sonic.getRangeInches() <= 6) {
-        		return true;
-        	} else {
+        	//if (sonic.getRangeInches() <= 6) {
+        		//return true;
+        	//} else {
         		return false;
-        	}
+        	//}
 	}
     // Called once after isFinished returns true
     protected void end() {
