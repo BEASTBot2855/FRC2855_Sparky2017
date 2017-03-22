@@ -53,11 +53,12 @@ public class OI {
 
     public JoystickButton joystickButton1;
     public JoystickButton joystickButton3;
-    public JoystickButton i2cstart;
     public Joystick joystick1;
     public JoystickButton joystickButton2;
     public JoystickButton joystickButton4;
     public JoystickButton joystickButton5;
+    public JoystickButton joystickButton6;
+    public JoystickButton joystickButton7;
     public Joystick joystick2;
 
     public OI() {
@@ -66,16 +67,21 @@ public class OI {
         joystick1 = new Joystick(0);
         
         joystickButton5 = new JoystickButton(joystick2, 1);
-        joystickButton5.whileHeld(new GearOut());
+        joystickButton5.whenPressed(new GearOut());
         joystickButton4 = new JoystickButton(joystick2, 2);
-        joystickButton4.whileHeld(new GearIn());
-        joystickButton2 = new JoystickButton(joystick1, 1);
-        joystickButton2.whileHeld(new GearUnpinch());
+        joystickButton4.whenPressed(new GearIn());
         
-        joystickButton3 = new JoystickButton(joystick1, 4);
+        joystickButton2 = new JoystickButton(joystick1, 4);
+        joystickButton2.whenPressed(new GearUnpinch());
+        joystickButton3 = new JoystickButton(joystick1, 3);
         joystickButton3.whileHeld(new Shooter());
-        joystickButton1 = new JoystickButton(joystick1, 2);
-        joystickButton1.whileHeld(new GearPinch());
+        joystickButton1 = new JoystickButton(joystick1, 1);
+        joystickButton1.whenPressed(new GearPinch());
+        joystickButton6 = new JoystickButton(joystick1, 2);
+        joystickButton6.whenPressed(new GearReleaseCommandGroup());
+        joystickButton7 = new JoystickButton(joystick1, 5);
+        joystickButton7.whenPressed(new GearPush());
+        
         
 
 

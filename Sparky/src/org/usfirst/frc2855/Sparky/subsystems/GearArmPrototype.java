@@ -14,7 +14,8 @@ package org.usfirst.frc2855.Sparky.subsystems;
 import org.usfirst.frc2855.Sparky.RobotMap;
 import org.usfirst.frc2855.Sparky.commands.*;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
