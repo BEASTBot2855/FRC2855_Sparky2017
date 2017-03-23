@@ -8,6 +8,7 @@ import org.usfirst.frc2855.Sparky.commands.GetPixyData;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -27,12 +28,20 @@ public class PixyArduino extends Subsystem {
     }
     
     public static void getDirection() {
-    	if (left.get() == true && right.get() == false) {
+    	boolean pin9 = left.get();
+    	boolean pin8 = right.get();
+    	
+    	SmartDashboard.putBoolean("PIN 9", pin9);
+    	SmartDashboard.putBoolean("PIN 8", pin8);
+    	
+    	if (pin9 == true && pin8 == false) {
     		DirectionVal = 1;
     		DriverStation.reportWarning("PIN 9 High", false);
-    	} else if (right.get() == true && left.get() == false) {
+    	} else if (pin8 == true && pin9 == false) {
     		DirectionVal = 2;
     		DriverStation.reportWarning("PIN 8 High", false);
+    	} else if (pin9 == true && pin8 == true){
+    		DriverStation.reportError("BOTH PINS HIGH", false);
     	} else {
     		DirectionVal = 0;
     		DriverStation.reportWarning("No Pin High", false);
