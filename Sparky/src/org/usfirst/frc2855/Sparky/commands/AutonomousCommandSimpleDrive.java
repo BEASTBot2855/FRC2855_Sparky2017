@@ -1,40 +1,44 @@
 package org.usfirst.frc2855.Sparky.commands;
 
 import org.usfirst.frc2855.Sparky.Robot;
-import org.usfirst.frc2855.Sparky.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutonomousCommandReleaseGear extends Command {
-	
-	public int n=0;
-    public AutonomousCommandReleaseGear() {
+public class AutonomousCommandSimpleDrive extends Command {
+
+	private static int a;
+    public AutonomousCommandSimpleDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.gearArmPrototype);
-    	
+    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	a = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gearArmPrototype.gearUnPinch();
+    	Robot.drive.driveRobot(-0.75, -0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        if (a >= 75) {
+        	return true;
+        } else {
+        	a++;
+        	return false;
+        }
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gearArmPrototype.gearPinchNull();
+    	Robot.drive.stop();
     }
 
     // Called when another command which requires one or more of the same

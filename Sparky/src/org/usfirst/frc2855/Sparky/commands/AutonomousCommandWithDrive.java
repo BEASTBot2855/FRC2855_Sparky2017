@@ -50,7 +50,7 @@ public class AutonomousCommandWithDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	int a = PixyArduino.getDirection();
+    	int a = PixyArduino.giveDirection();
     	if (a == 1) {
     		Robot.drive.driveRobot(1.0, -1.0);
     		System.out.println("Move Left!!!");
@@ -61,7 +61,6 @@ public class AutonomousCommandWithDrive extends Command {
     		Robot.drive.driveRobot(-0.0, -0.0);
     		System.out.println("You are on target");
     	}
-    	Timer.delay(0.25);
     }
 
     // Make this return true when this Command no longer needs to run execute()
