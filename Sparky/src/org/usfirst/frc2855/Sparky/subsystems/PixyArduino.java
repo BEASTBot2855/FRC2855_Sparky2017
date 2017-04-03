@@ -24,7 +24,7 @@ public class PixyArduino extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new GetPixyData());
+    	//setDefaultCommand(new GetPixyData());
     }
     
     public static void getDirection() {

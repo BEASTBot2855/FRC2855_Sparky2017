@@ -7,33 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommandSimpleDrive extends Command {
+public class AutoGearCommand extends Command {
 
-	private static int a;
-    public AutonomousCommandSimpleDrive() {
+	private static int t = 0;
+    public AutoGearCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	a = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.driveRobot(-1.0, -1.0);
+    	Robot.drive.driveRobot(-0.6, -0.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (a >= 75) {
+        if (t >= 450) { // stop at 4 secs
         	return true;
         } else {
-        	a++;
+        	t += 5;
         	return false;
         }
+    	
     }
 
     // Called once after isFinished returns true

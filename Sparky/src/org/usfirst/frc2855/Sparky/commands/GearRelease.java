@@ -7,38 +7,31 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommandSimpleDrive extends Command {
+public class GearRelease extends Command {
 
-	private static int a;
-    public AutonomousCommandSimpleDrive() {
+    public GearRelease() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
+    	requires(Robot.gearArmPrototype);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	a = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.driveRobot(-1.0, -1.0);
+    	Robot.gearArmPrototype.gearUnPinch();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (a >= 75) {
-        	return true;
-        } else {
-        	a++;
-        	return false;
-        }
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drive.stop();
+    	Robot.gearArmPrototype.gearPinchNull();
     }
 
     // Called when another command which requires one or more of the same

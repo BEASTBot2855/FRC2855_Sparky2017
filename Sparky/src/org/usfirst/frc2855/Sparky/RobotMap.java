@@ -17,6 +17,7 @@ import org.usfirst.frc2855.Sparky.SPIGyro.ADXRS453Gyro;
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.I2C;
@@ -49,6 +50,9 @@ public class RobotMap {
     public static Solenoid gearArmPrototypeGearPushSolenoid;
 
     public static void init() {
+    	
+    	CameraServer.getInstance().startAutomaticCapture();
+    	
         driveCANTalon1 = new CANTalon(1);
         LiveWindow.addActuator("Drive1", "CAN Talon 1", driveCANTalon1);
         
