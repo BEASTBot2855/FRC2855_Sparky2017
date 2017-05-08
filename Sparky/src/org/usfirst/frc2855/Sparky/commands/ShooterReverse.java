@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommandReverseDrive extends Command {
+public class ShooterReverse extends Command {
 
-    public AutonomousCommandReverseDrive() {
+    public ShooterReverse() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,7 +20,7 @@ public class AutonomousCommandReverseDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.driveRobot(-.5, -.5);
+    	Robot.shooterRun.reverseShooter();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +30,7 @@ public class AutonomousCommandReverseDrive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drive.stop();;
+    	Robot.shooterRun.stopShooter();
     }
 
     // Called when another command which requires one or more of the same
